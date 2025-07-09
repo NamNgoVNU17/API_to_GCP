@@ -34,4 +34,4 @@ The following countries are the top destinations for Vietnamese exports, based o
 
 Example endpoint for historical rates:
 ```bash
-https://api.exchangerate.host/timeseries?source=USD&currencies=CNY,JPY,KRW,HKD,INR,GBP,EUR,AUD
+https://api.exchangerate.host/timeframe?source=USD&currencies=CNY,JPY,KRW,HKD,INR,GBP,EUR,AUD&start_date=2015-01-01&end_date=2025/07/07
