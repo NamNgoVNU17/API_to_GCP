@@ -2,7 +2,7 @@
 
 This project collects and visualizes historical USD exchange rates to the top 10 countries importing the most from Vietnam, leveraging Google Cloud Platform (GCP) services for scalable data processing and storage. It enables analysts and decision-makers to better understand currency fluctuations that may impact international trade.
 
-## 📊 Live Dashboard
+## 📊 Dashboard
 
 View the interactive Looker Studio dashboard:  
 🔗 [USD Exchange Rates Dashboard](https://lookerstudio.google.com/reporting/d6b2ba5d-4000-444d-b544-bb8fabe525f0)
