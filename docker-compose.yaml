@@ -1,0 +1,35 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  airflow:
+    image: apache/airflow:2.7.0
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+      - AIRFLOW__CORE__FERNET_KEY=38xZz-B0cG5QwNvnrs0D19WFQv5BRfIc7wdk64e3uiY=
+      - GOOGLE_APPLICATION_CREDENTIALS=/opt/airflow/gcs-key.json
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./scripts:/opt/airflow/scripts
+      - ./requirements.txt:/requirements.txt
+      - ./gcs-key.json:/opt/airflow/gcs-key.json
+      - ./config:/opt/airflow/config
+    ports:
+      - "8080:8080"
+    command: ['bash', '/opt/airflow/scripts/entrypoint.sh']
+volumes:
+  postgres_data:
